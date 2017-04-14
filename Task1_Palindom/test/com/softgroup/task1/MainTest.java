@@ -7,11 +7,10 @@ import org.junit.runners.Parameterized;
 import java.util.Arrays;
 import java.util.Collection;
 
-import static org.junit.Assert.assertEquals;
-import static task1.Main.isPalindrom_ForLoop;
-import static task1.Main.isPalindrom_Recursion;
-import static task1.Main.isPalindrom_Reverse;
-
+import static com.softgroup.task1.Main.isPalindrom_ForLoop;
+import static com.softgroup.task1.Main.isPalindrom_Recursion;
+import static com.softgroup.task1.Main.isPalindrom_Reverse;
+import static org.junit.Assert.*;
 
 /**
  * Created by Andrew on 14.04.2017.

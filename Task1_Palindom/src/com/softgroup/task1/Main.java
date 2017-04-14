@@ -1,4 +1,4 @@
-package task1;
+package com.softgroup.task1;
 
 /**
  * Created by Andrew on 14.04.2017.
