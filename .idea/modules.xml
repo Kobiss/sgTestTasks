@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Task1_Palindom/Task1_Palindom.iml" filepath="$PROJECT_DIR$/Task1_Palindom/Task1_Palindom.iml" />
       <module fileurl="file://$PROJECT_DIR$/Task2_ComplementarySequences/Task2_ComplementarySequences.iml" filepath="$PROJECT_DIR$/Task2_ComplementarySequences/Task2_ComplementarySequences.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Task3_BigFile/Task3_BigFile.iml" filepath="$PROJECT_DIR$/Task3_BigFile/Task3_BigFile.iml" />
       <module fileurl="file://$PROJECT_DIR$/TestTasks.iml" filepath="$PROJECT_DIR$/TestTasks.iml" />
     </modules>
   </component>
