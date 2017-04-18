@@ -2,7 +2,6 @@ package com.softgroup.task3;
 
 import java.io.*;
 import java.util.*;
-import java.util.concurrent.ConcurrentLinkedQueue;
 
 /**
  * Created by Andrew on 17.04.2017.
@@ -12,7 +11,12 @@ public class MainTest{
     private static final String DICTIONARY_FILE_NAME = "words.txt";
     private static final String BIG_FILE_NAME = "phrases.txt";
 
-    private static final boolean DELETE_PHRASE_FILE = true;
+    private static final boolean DELETE_PHRASE_FILE_AFTER_TEST = true;
+
+    // 1000 iterations ~ 0.5-1 MB
+    private static final int NUMBER_OF_ITERATION_X1000 = 10000;
+
+    private static final int NUMBER_OF_MOST_COMMON_PHRASES = 100;
 
     @org.junit.Before
     public void setUp() throws Exception {
@@ -22,13 +26,13 @@ public class MainTest{
             BufferedWriter bw = new BufferedWriter(fw);
 
             List<String> wordSet = fillWordSet();
-            System.out.println("Fill wordSet done");
+            System.out.println("Fill dictionary done");
 
             Random random = new Random();
             int dictionarySize = wordSet.size()-1;
 
-            // 1000 iterations ~ 1 MB
-            for (int i = 0; i < 1000*1000; i++) {
+
+            for (int i = 0; i < NUMBER_OF_ITERATION_X1000*1000; i++) {
                 StringBuilder line = new StringBuilder();
                 for (int j = 0; j < 50; j++) {
                     line.append(wordSet.get(random.nextInt(dictionarySize))).append(" ").append(wordSet.get(random.nextInt(dictionarySize))).append("|");
@@ -40,10 +44,10 @@ public class MainTest{
                     e.printStackTrace();
                 }
                 if(i%10000==0) {
-                    System.out.println("Number of phrases: "+i*50+" | Number of lines: "+i+" ~ "+i/1000+" MB");
+                    System.out.println("Number of phrases: "+i*50+" | Number of lines: "+i);
                 }
             }
-            System.out.println("Fill large file DONE");
+            System.out.println("Fill Big File DONE");
         }
     }
 
@@ -75,7 +79,7 @@ public class MainTest{
 
     @org.junit.After
     public void tearDown() throws Exception {
-        if (DELETE_PHRASE_FILE) {
+        if (DELETE_PHRASE_FILE_AFTER_TEST) {
             File file = new File(BIG_FILE_NAME);
             if(file.delete()){
                 System.out.println("File " + file.getAbsolutePath() + " is deleted!");
@@ -88,7 +92,7 @@ public class MainTest{
     @org.junit.Test
     public void getTop100kMostCommonPhrasesInFileTest() throws Exception {
 
-        Map<String, Integer> map = Main.getTop100kMostCommonPhrasesInFile(BIG_FILE_NAME);
+        Map<String, Integer> map = Main.getTopMostCommonPhrasesInFile(BIG_FILE_NAME, NUMBER_OF_MOST_COMMON_PHRASES);
 
         for (Map.Entry<String, Integer> entry: map.entrySet()) {
             System.out.println(entry.getKey() + " " + entry.getValue());
